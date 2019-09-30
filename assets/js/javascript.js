@@ -252,7 +252,6 @@ class AClock
 }
 
 /******************************************* Top Level *******************************************/
-
 //Firebase API configuration.
 var firebaseConfig =
 {
@@ -328,7 +327,7 @@ function addTrain(event)
         isInvalidName = true;
     }
 
-    //Set the text are as invalid if something is wrong.
+    //Set the text area as invalid if something is wrong.
     isInvalidName ? $("#name-input").addClass("is-invalid") : 
                     $("#name-input").removeClass("is-invalid");
 
@@ -338,7 +337,7 @@ function addTrain(event)
         isInvalidDest = true;
     }
 
-    //Set the text are as invalid if something is wrong.
+    //Set the text area as invalid if something is wrong.
     isInvalidDest ? $("#dest-input").addClass("is-invalid") : 
                     $("#dest-input").removeClass("is-invalid");
 
@@ -375,7 +374,7 @@ function addTrain(event)
         isInvalidFirst = true;
     }
 
-    //Set the text are as invalid if something is wrong.
+    //Set the text area as invalid if something is wrong.
     isInvalidFirst ? $("#time-input").addClass("is-invalid") : 
                      $("#time-input").removeClass("is-invalid");
     
@@ -393,7 +392,7 @@ function addTrain(event)
         isInvalidFreq = true;
     }
 
-    //Set the text are as invalid if something is wrong.
+    //Set the text area as invalid if something is wrong.
     isInvalidFreq ? $("#freq-input").addClass("is-invalid") : 
                     $("#freq-input").removeClass("is-invalid");
 
@@ -432,6 +431,7 @@ function addTrain(event)
     });
 }
 
+//Event listener that gets called whenever a child is added to Firebase.
 var ref = firebase.database().ref("trains");
 ref.orderByKey().on("child_added", function(snapshot)
 {
@@ -525,7 +525,7 @@ ref.orderByKey().on("child_added", function(snapshot)
     trainID++;
 
     //Add the data to the webpage!
-    $("#table-body").append(tr);
+    $("#table-body").prepend(tr);
 
     //Update the tables periodically.
     setInterval(function()
