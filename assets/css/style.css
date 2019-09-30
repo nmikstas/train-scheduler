@@ -30,6 +30,11 @@ h3
     color: #7f7f7f;
 }
 
+th
+{
+    font-weight: bold;
+}
+
 .header-class
 {
     font-family: Georgia, Times, serif;
@@ -44,6 +49,12 @@ h3
 .card
 {
     margin-bottom: 20px;
+}
+
+.remove-button
+{
+    text-align: center;
+    
 }
 
 #dtime

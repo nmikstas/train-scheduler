@@ -7,19 +7,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <!--Styling-->
+    <!--Reset Styling-->
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!--Moment.js-->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!--Personal Styling-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body class="d-flex flex-column" id="main-body">
@@ -62,10 +57,17 @@
                         <div class="card-header"><h3>Current Train Schedule</h3></div>
                         <div class="card-body">
                             <table class="table">
-
-
-
-
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Train Name</th>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Frequency(Min)</th>
+                                        <th scope="col">Next Arrival</th>
+                                        <th scope="col">Minutes Away</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body"></tbody>
                             </table>
                         </div>
                     </div>
@@ -78,10 +80,29 @@
                     <div class="card card-default">
                         <div class="card-header"><h3>Add Train</h3></div>
                         <div class="card-body">
-
-
-
-
+                            <form>
+                                <div class="form-group row">
+                                    <label for="name-input">Train Name</label>
+                                    <input class="form-control" id="name-input" type="text">
+                                </div>
+            
+                                <div class="form-group row">
+                                    <label for="dest-input">Destination</label>
+                                    <input class="form-control" id="dest-input" type="text">
+                                </div>
+            
+                                <div class="form-group row">
+                                    <label for="time-input">First Train Time(HH:MM - Military Time)</label>
+                                    <input class="form-control" id="time-input" type="text">
+                                </div>
+            
+                                <div class="form-group row">
+                                    <label for="freq-input">Frequency(Min)</label>
+                                    <input class="form-control" id="freq-input" type="text">
+                                </div>
+                                    
+                                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -94,6 +115,16 @@
             <small>&copy; Nick Mikstas - nmikstas@alumni.scu.edu</small>
         </div>
     </footer>
+
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--Moment.js-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
     <!--Javascript-->
     <script src="assets/js/javascript.js"></script>
