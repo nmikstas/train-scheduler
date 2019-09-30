@@ -54,7 +54,11 @@ th
 .remove-button
 {
     text-align: center;
-    
+}
+
+.time-low
+{
+    color: #ff0000;
 }
 
 #dtime

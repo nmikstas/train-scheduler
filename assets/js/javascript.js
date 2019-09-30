@@ -493,13 +493,11 @@ ref.orderByKey().on("child_added", function(snapshot)
 
     //Update text.
     tdNext.text(moment(nextTrain).format("hh:mm A"));
-
     tr.append(tdNext);
 
+    //Leave empty for now.  Will append info periodically.
     var tdAway = $("<td>");
     tdAway.attr("id", "train-away" + trainID);
-    tdAway.text(freq - tRemainder);
-
     tr.append(tdAway);
 
     //Add a remove button.
@@ -523,6 +521,12 @@ ref.orderByKey().on("child_added", function(snapshot)
         ref.remove();    
     });
 
+    //Make sure each train has a unique trainID.
+    trainID++;
+
+    //Add the data to the webpage!
+    $("#table-body").append(tr);
+
     //Update the tables periodically.
     setInterval(function()
     {
@@ -540,14 +544,50 @@ ref.orderByKey().on("child_added", function(snapshot)
 
         //Update text.
         tdNext.text(moment(nextTrain).format("hh:mm A"));
-        tdAway.text(freq - tRemainder);
-    }, 1000);
 
-    //Make sure each train has a unique trainID.
-    trainID++;
+        //Do some extra calculations to get minutes and seconds.
+        thisTime = moment();
+        nextTime = moment(nextTrain).format("hh:mm A").toString();
+        diffTime = moment().diff(moment(nextTime, "hh:mm A"), "seconds");
+        
+        //DiffTime now contains the seconds until the next train.
+        diffTime = Math.abs(diffTime);
 
-    //Add the data to the webpage!
-    $("#table-body").append(tr);
+        //Get the seconds remaining.
+        var secRemaining = diffTime % 60;
+        console.log("seconds Remaining: " + secRemaining);
+
+        //Get the hours remaining and update diffTime.
+        var hourRemaining = Math.floor(diffTime / 3600);
+        diffTime -= hourRemaining * 3600;
+
+        //Get the total minutes remaining and update diffTime.
+        var minRemaining = Math.floor(diffTime / 60);
+        diffTime -= minRemaining * 60;
+
+        //Get the seconds remaining.
+        secRemaining = diffTime;
+
+        //Prepend zeros if necessary.
+        hourRemaining = (hourRemaining < 10) ? "0" + hourRemaining : hourRemaining;
+        minRemaining  = (minRemaining < 10)  ? "0" + minRemaining  : minRemaining;
+        secRemaining  = (secRemaining < 10)  ? "0" + secRemaining  : secRemaining;
+
+        //Generate final text string.
+        diffString = hourRemaining + ":" + minRemaining + ":" + secRemaining;
+        tdAway.text(diffString);
+
+        //Make the time remaining red if a train will arrive in less than a minute.
+        if(hourRemaining === "00" && minRemaining === "00")
+        {
+            tdAway.addClass("time-low");
+        }
+        else
+        {
+            tdAway.removeClass("time-low");
+        }
+
+    }, 200);
 },
 function(errorObject) //Handle the errors.
 {
