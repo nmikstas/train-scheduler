@@ -1,6 +1,9 @@
 body, html
 {
     height: 100%;
+    background-image: url("../images/noisy_net.png");
+    overflow-x: hidden;
+    font-size: 16px;
 }
 
 h1
@@ -8,9 +11,9 @@ h1
     font-family: sans-serif;
     font-size: 50px;
     font-weight: bold;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
-    padding: 30px;
+    width: 100%;
 }
 
 h2
@@ -30,20 +33,19 @@ h3
     color: #7f7f7f;
 }
 
+h4
+{
+    font-family: sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    padding: 30px;
+}
+
 th
 {
     font-weight: bold;
-}
-
-.header-class
-{
-    font-family: Georgia, Times, serif;
-    text-align: center;
-    background-color: #4aaaa5;
-    color: #ffffff;
-    font-size: 30px;
-    border-bottom: 3px solid #666666;
-    padding: 20px 0px;
 }
 
 .card
@@ -73,12 +75,46 @@ th
 
 #page-body
 {
-    background-image: url("../images/mosaic.png");
     flex: 1 0 auto;
 }
 
-#sticky-footer
+/******************************************** Header *********************************************/
+.header-class
 {
-    background-color: #666666;
-    border-top: 8px solid #4aaaa5;
+    font-family: Georgia, Times, serif;
+    text-align: center;
+    background-color: rgba(30, 47, 126, 0.3);
+    color: #ffffff;
+    font-size: 30px;
+    border-bottom: 3px solid #666666;
+    padding: 20px 0px;
+}
+
+.nav-link
+{
+    font-family:  sans-serif;
+    font-size:    20px;
+}
+
+.nav-title
+{
+    height: 100%;
+    font-family: sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.nav-title:hover,
+.nav-link:hover
+{
+    background-color:  rgba(30, 47, 126, 1);
+    border-radius: 5px;
+}
+
+/******************************************** Footer *********************************************/
+footer
+{
+    border-top: 1px solid #666666;
+    background-color: rgba(30, 47, 126, 0.3);
+    color: #ffffff;
 }
